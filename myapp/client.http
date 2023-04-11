@@ -8,11 +8,12 @@ get http://localhost:3000/
 
 
 ###
-post http://locahost:3000/register
+post http://localhost:3000/register
 
 ###
 post http://localhost:3000/login
 Content-Type: application/json
+
 {
     "username":"amir",
     "password":"abc123"
