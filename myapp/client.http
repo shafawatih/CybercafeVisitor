@@ -1,10 +1,12 @@
 get http://localhost:3000/bye
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbmdlIHJvdmVyIiwicGFzc3dvcmQiOiI1Njc4IiwibmFtZSI6Imhhcml0aCIsImVtYWlsIjoiaGFyaXRoMTJAZ21haWwuY29tIiwiaWF0IjoxNjgxMzcxNzQ0fQ.5iGK9ahJNhb9g-G8wz5I7iMILpUZI1XOM4_t04VkaHo
+
+
 
 ###
 
 
 get http://localhost:3000/
-
 
 
 ###
@@ -15,6 +17,6 @@ post http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "username":"amir",
-    "password":"abc123"
+    "username":"range rover",
+    "password":"5678"
 }

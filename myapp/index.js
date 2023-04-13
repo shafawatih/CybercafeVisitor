@@ -36,19 +36,29 @@ function register(reqUsername,reqPassword,reqName,reqEmail){
 const express = require('express')
 const app = express()
 const port = 3000
+const jwt = require('jsonwebtoken');
 
 app.use(express.json())
+
+// login function
 
 app.post('/login', (req, res) => {
     console.log(req.body)
 
-    let result = login(req.body.username,req.body.password)
+    let result = login(
+      req.body.username,
+      req.body.password
+      )
+      
+    let Token = generateToken(result)
 
-    res.send(result)
+    res.send(Token)
 })
 
 function login(reqUsername, reqPassword) {
-  let matchuser = BMuser.find (user => user.username == reqUsername)
+  let matchuser = BMuser.find (
+    user => user.username == reqUsername
+    )
 
   if (!matchuser) return "User not found!"
   if(matchuser.password == reqPassword){
@@ -69,11 +79,37 @@ app.post('/register', (req, res) => {
     res.send(result)
 })
 
+
+function generateToken(userData){
+  const Token = jwt.sign(
+    userData,
+    'inipassword',
+    {expiresIn :60}
+
+  );
+  return Token
+};
+/*function register(reqUsername,reqPassword,reqName,reqEmail)
+*/
 app.get('/', (req, res) => {
   res.send('hello there')
 })
 
-app.get('/bye', (req, res) => {
+function verifyToken(req,res,next){
+  let header = req.headers.authorization
+  console.log(header)
+
+  let Token = header.split(' ')[1]
+
+  jwt.verify(Token,'inipassword',function(err,decoded){
+    if(err){
+      res.send("invalid token")
+    }
+    req.user = decoded
+    next()
+  });
+}
+app.get('/bye',verifyToken, (req,res,next) => {
     res.send('bye')
 })
 
