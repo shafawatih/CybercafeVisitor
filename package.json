@@ -1,7 +1,6 @@
 {
   "name": "cybercafe",
   "version": "1.0.0",
-  "description": "",
   "main": "Cybercafe.js",
   "dependencies": {
     "abab": "^2.0.6",
@@ -580,5 +579,6 @@
     "test": "mocha"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": ""
 }
