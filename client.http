@@ -1,0 +1,72 @@
+
+###
+post http://localhost:3000/login/admin
+Content-Type: application/json
+
+{
+    "username":"amir",
+    "password":"12345678"
+}
+
+//Admin
+
+###
+post http://localhost:3000/create/user
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFtaXIiLCJpYXQiOjE3MDMzMzI1NDMsImV4cCI6MTcwMzMzMzE0M30.7o4Y1PMlK_9UlVCvuJuP0e-5djzMuhmOlrzaEIsW9qc
+Content-Type: application/json
+
+{
+    "username":"Abu",
+    "idproof":"b022120004"
+
+}
+
+###
+GET http://localhost:3000/view/user/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFtaXIiLCJpYXQiOjE3MDMzMzI1NDMsImV4cCI6MTcwMzMzMzE0M30.7o4Y1PMlK_9UlVCvuJuP0e-5djzMuhmOlrzaEIsW9qc
+
+//Visitor
+
+###
+post http://localhost:3000/create/visitor
+Content-Type: application/json
+
+{
+    "visitorname": "Dr Lim",
+    "idproof": "d123",
+    "entrytime":1045
+}
+
+###
+GET http://localhost:3000/view/visitor/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFtaXIiLCJpYXQiOjE3MDMzNzk2MzQsImV4cCI6MTcwMzM4MDIzNH0.KWZDnT5FQJ7o701UqCVd0OkUn_U-zkO6K1kVrn-uE98
+//Visitor log
+
+###
+post http://localhost:3000/create/visitorlog
+Content-Type: application/json
+
+{
+    "visitorname": "dr soo",
+    "idproof": "d123",
+    "timespend": 3,
+    "payment": 12
+}
+
+###
+GET http://localhost:3000/view/visitorlog/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFtaXIiLCJpYXQiOjE3MDMzMjE3NjcsImV4cCI6MTcwMzMyMjM2N30.xtTP3QWo6u3OPWDBPNawtd5GFjAid6G2HpQyAq1-xyw
+
+###
+POST http://localhost:3000/create/computer
+Content-Type: application/json
+
+{
+    "idproof": "b123", 
+    "lanportno": 31738124,
+    "available": "yes"
+}
+
+###
+GET http://localhost:3000/view/computer/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFtaXIiLCJpYXQiOjE3MDMzMjE3NjcsImV4cCI6MTcwMzMyMjM2N30.xtTP3QWo6u3OPWDBPNawtd5GFjAid6G2HpQyAq1-xyw

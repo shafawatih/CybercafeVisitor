@@ -1,0 +1,333 @@
+/**
+ * @openapi
+ * components:
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
+ */
+
+/**
+ * @swagger
+ * /login/admin:
+ *   post:
+ *     summary: Login Admin
+ *     tags:
+ *       - Admin Access
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Admin created successfully
+ *       400:
+ *         description: Bad Request
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Invalid input data
+ *
+ *     examples:
+ *       'application/json':
+ *         username: JohnDoe
+ *         password: XYZ123
+ */
+
+
+
+/**
+ * @swagger
+ * /create/user:
+ *   post:
+ *     summary: Create a User
+ *     tags:
+ *       - User Management
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               idproof:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: User created successfully
+ *       400:
+ *         description: Bad Request
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Invalid input data
+ *
+ *     examples:
+ *       'application/json':
+ *         username: JohnDoe
+ *         idproof: XYZ123
+ */
+
+
+/**
+ * @openapi
+ * paths:
+ *   /view/user/admin:
+ *     get:
+ *       summary: View Users
+ *       tags:
+ *         - User Management
+ *       security:
+ *         - bearerAuth: []
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved user information.
+ *           content:
+ *             application/json:
+ *               example:
+ *                 visitors:
+ *                   - visitorname: "ayam"
+ *                     id: "999999999"
+ *         '401':
+ *           description: Unauthorized. Only admin can view
+ *           content:
+ *             application/json:
+ *               example:
+ *                 error: "Unauthorized"
+ *         '500':
+ *           description: Internal Server Error.
+ *           content:
+ *             application/json:
+ *               example:
+ *                 error: "Internal Server Error"
+ */
+/**
+
+
+
+/**
+ * @swagger
+ * /create/visitor:
+ *   post:
+ *     summary: Create a Visitor
+ *     tags:
+ *       - Visitor List
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               visitorname:
+ *                 type: string
+ *               idproof:
+ *                 type: string
+ *               entrytime:
+ *                 type: integer
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Visitor created successfully
+ *       400:
+ *         description: Bad Request
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Invalid input data
+ *
+ *     examples:
+ *       'application/json':
+ *         visitorname: JohnDoe
+ *         idproof: XYZ123
+ *         entrytime: 1530
+ */
+
+
+/**
+ * @openapi
+ * paths:
+ *   /view/visitor:
+ *     get:
+ *       summary: View Visitors
+ *       tags:
+ *         - Visitor List
+ *       security:
+ *         - bearerAuth: []
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved visitor information.
+ *           content:
+ *             application/json:
+ *               example:
+ *                 visitors:
+ *                   - visitorname: "ayam"
+ *                     idproof: "999999999"
+ *                     entrytime: "1530"
+ *         '401':
+ *           description: Unauthorized. Only admin can view
+ *           content:
+ *             application/json:
+ *               example:
+ *                 error: "Unauthorized"
+ *         '500':
+ *           description: Internal Server Error.
+ *           content:
+ *             application/json:
+ *               example:
+ *                 error: "Internal Server Error"
+ */
+/**
+
+
+
+/**
+ * @swagger
+ * /create/visitorlog:
+ *   post:
+ *     summary: Create a visitorlog
+ *     tags:
+ *       - Visitor Log
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               visitorname:
+ *                 type: string
+ *               idproof:
+ *                 type: string
+ *               timespend:
+ *                 type: string
+ *               payment:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Visitor Log created successfully
+ *       400:
+ *         description: Bad Request
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Invalid input data
+ *
+ *     examples:
+ *       'application/json':
+ *         username: JohnDoe
+ *         idproof: XYZ123
+ */
+
+
+/**
+ * @openapi
+ * /view/visitorlog/admin:
+ *   get:
+ *     summary: View all visitor logs on by admin
+ *     tags:
+ *       - Visitor Log
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             example:
+ *               - visitorname: ayam
+ *                 idproof: 9999999
+ *                 timespend: 2 hours
+ *                 payment: $10
+ *               - visitorname: Jane Doe
+ *       401:
+ *         description: Unauthorized
+ */
+
+
+
+/**
+ * @swagger
+ * /create/computer:
+ *   post:
+ *     summary: Create a computer's availability
+ *     tags:
+ *       - Computer
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               idproof:
+ *                 type: string
+ *               lanportno:
+ *                 type: string
+ *               available:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: Computer created successfully
+ *       400:
+ *         description: Bad Request
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Invalid input data
+ *
+ *     examples:
+ *       'application/json':
+ *         username: JohnDoe
+ *         idproof: XYZ123
+ */
+
+
+/**
+ * @openapi
+ * /view/computer/admin:
+ *   get:
+ *     summary: View all computer's availability by admin
+ *     tags:
+ *       - Computer
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             example:
+ *               - idproof: 9999999
+ *                 lanportno: 317
+ *                 available: yes
+ *               - visitorname: Jane Doe
+ *       401:
+ *         description: Unauthorized
+ */
+
+

@@ -1,0 +1,1 @@
+mongodb+srv://myAtlasDBUser:h0Sp5O2iP0bJDJ4y@myatlasclusteredu.btn6xaa.mongodb.net/
