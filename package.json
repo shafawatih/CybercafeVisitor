@@ -362,6 +362,7 @@
     "node-fetch": "^2.7.0",
     "node-int64": "^0.4.0",
     "node-releases": "^2.0.14",
+    "nodejs": "^0.0.0",
     "nodemon": "^1.19.4",
     "nopt": "^5.0.0",
     "normalize-path": "^3.0.0",
