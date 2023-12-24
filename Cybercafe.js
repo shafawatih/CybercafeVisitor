@@ -196,15 +196,53 @@
  *                 error: "Internal Server Error"
  */
 
-
+/**
+ * @openapi
+ * paths:
+ *   /delete/visitor/{idproof}:
+ *     delete:
+ *       summary: Delete Visitors
+ *       tags:
+ *         - Visitor List
+ *       security:
+ *         - bearerAuth: []
+ *       parameters:
+ *         - in: path
+ *           name: idproof
+ *           required: true
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved visitor information.
+ *           content:
+ *             application/json:
+ *               example:
+ *                 visitors:
+ *                   - visitorname: "ayam"
+ *                     idproof: "999999999"
+ *                     entrytime: "1530"
+ *         '401':
+ *           description: Unauthorized. Only admin can view
+ *           content:
+ *             application/json:
+ *               example:
+ *                 error: "Unauthorized"
+ *         '500':
+ *           description: Internal Server Error.
+ *           content:
+ *             application/json:
+ *               example:
+ *                 error: "Internal Server Error"
+ */
 
 /**
  * @swagger
- * /create/visitorlog:
+ * /create/visitorlog/admin:
  *   post:
  *     summary: Create a visitorlog
  *     tags:
  *       - Visitor Log
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       content:
  *         application/json:

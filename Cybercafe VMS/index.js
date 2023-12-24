@@ -9,7 +9,8 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'MyVMS API',
+      title: 'Cybercafe Visitor Management System API',
+      description: 'API for managing visitors in a cybercafe',
       version: '1.0.0',
     },
   },
@@ -118,11 +119,31 @@ async function run() {
         }
     });
     
+
+    //delete visitor
+    app.delete('/delete/visitor/:idproof', verifyToken, async (req, res) => {
+      const idproof = req.params.idproof;
     
+      try {
+        const deletevisitorResult = await client
+          .db('Cybercafe')
+          .collection('Visitor')
+          .deleteOne({ idproof: idproof});
     
+        if (deletevisitorResult.deletedCount === 0) {
+          return res.status(404).send('Visitor not found or unauthorized');
+        }
+    
+        res.send('Visitor deleted successfully');
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+      }
+    });
+
     
     //create visitor log
-    app.post('/create/visitorlog', async (req, res) => {
+    app.post('/create/visitorlog/admin', verifyToken, async (req, res) => {
         let result = createvisitorlog(
         req.body.visitorname,
         req.body.idproof,
@@ -231,7 +252,7 @@ function createvisitorlog(reqvisitorname, reqidproof, reqtimespend = 0, reqpayme
         "payment": reqpayment,
       });
       return "Visitor log is recorded";
-    }
+    }
 
 //create computer function
 function createcomputer(reqidproof, reqLanportno, reqAvailable) {
